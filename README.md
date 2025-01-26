@@ -11,14 +11,45 @@
 ## Tasks
 
 <details>
-<summary>▶ Task 1: Development of C Program</summary>
+<summary>▶ Task 1: C Program Compilation and RISC-V Simulation</summary>
 
 ### Files:
-1. [C-programming output snapshot](./Task1/c%20programm%20output%20snapshot.png)
-2. [RISC-V (O1, Ofast)](./Task1/riscv%20(O1,Ofast).png)
-3. [RISC-V 1 (O1)](./Task1/riscv%201(O1).png)
-4. [RISC-V 2 (Ofast)](./Task1/riscv%202%20(Ofast).png)
-5. [Ubuntu screenshot](./Task1/ubuntu%20screenshot.png)
+1. [C Program Output Snapshot](./Task1/c_program_output_snapshot.png)
+2. [RISC-V Simulation Output (O1)](./Task1/riscv_O1.png)
+3. [RISC-V Simulation Output (O1) - Part 1](./Task1/riscv_1_O1.png)
+4. [RISC-V Simulation Output (Ofast) - Part 2](./Task1/riscv_2_Ofast.png)
+5. [Ubuntu Screenshot](./Task1/ubuntu_screenshot.png)
+
+### Task Overview:
+
+In this task, a C program was compiled and simulated on the RISC-V architecture. Outputs from different optimization levels (`-O1` and `-Ofast`) were analyzed to observe the effects on program performance and behavior.
+
+#### 1. **C Program Output Snapshot (`c_program_output_snapshot.png`)**
+   - A screenshot showing the output of the C program after compilation and execution.
+   - It helps visualize the results produced by the program.
+
+#### 2. **RISC-V Simulation Output (O1) (`riscv_O1.png`)**
+   - A screenshot showing the output from the RISC-V simulation with `-O1` optimization.
+   - This output helps in comparing the performance and execution flow with optimization.
+
+#### 3. **RISC-V Simulation Output (O1) - Part 1 (`riscv_1_O1.png`)**
+   - A screenshot of the first part of the RISC-V simulation output with `-O1` optimization.
+   - It shows the intermediate results of the simulation.
+
+#### 4. **RISC-V Simulation Output (Ofast) - Part 2 (`riscv_2_Ofast.png`)**
+   - A screenshot showing the output from the RISC-V simulation with `-Ofast` optimization.
+   - This output helps in comparing the results with the `-O1` optimization.
+
+#### 5. **Ubuntu Screenshot (`ubuntu_screenshot.png`)**
+   - A screenshot showing the program execution environment on Ubuntu.
+   - This image highlights the terminal where the C program was compiled and executed.
+
+### Simulation Process:
+
+1. **Compile the C Program**: The C program was compiled using the standard compilation method.
+2. **RISC-V Simulation**: The compiled program was simulated using the RISC-V architecture with `-O1` and `-Ofast` optimization levels.
+3. **Analyze Outputs**: The outputs from both optimization levels were compared to observe performance differences.
+4. **Capture Screenshots**: Screenshots of the simulation results were taken for documentation.
 
 </details>
 
