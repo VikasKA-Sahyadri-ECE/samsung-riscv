@@ -391,10 +391,11 @@ imm[11:5] | rs2   | rs1   | funct3 | imm[4:0] | opcode
 <summary>▶ Task 4: Verilog Simulation</summary>
 
 ### Files:
-1. [Basic Step of Iverilog](./Task4/Basicstep_of_iverilog.png)
-2. [GTKWAVE Waveform 1](./Task4/GTKWAVE_waveform1.png)
-3. [GTKWAVE Waveform 2](./Task4/GTKWAVE_waveform2.png)
-4. [GTKWAVE Window](./Task4/GTKWAVE_window.png)
+![Basic Step of Iverilog](RISC-V_Simulation/Task4/Basicstep_of_iverilog.png)
+![GTKWAVE Waveform 1](RISC-V_Simulation/Task4/GTKWAVE_waveform1.png)
+![GTKWAVE Waveform 2](RISC-V_Simulation/Task4/GTKWAVE_waveform2.png)
+![GTKWAVE Window](RISC-V_Simulation/Task4/GTKWAVE_window.png)
+
 
 ### Task Overview:
 
