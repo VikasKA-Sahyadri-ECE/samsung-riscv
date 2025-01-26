@@ -79,108 +79,323 @@ In Task 2, the compiled C code was simulated on the Spike RISC-V simulator. Spik
 </details>
 
 <details>
+   
 <summary>▶ Task 3: Machine Code Instructions</summary>
 
 ### Files:
 1. [Instructions.md](https://github.com/VikasKA-Sahyadri-ECE/samsung-riscv/blob/main/Task3/instructions.md)
 2. [Task3.txt](https://github.com/VikasKA-Sahyadri-ECE/samsung-riscv/blob/main/Task3/Task3.txt)
 
+
 ### Content:
-2.Machine Code for sd ra, 8(sp)
-Instruction: sd ra, 8(sp) Opcode: 0100011 (7 bits) Immediate: 8 (12 bits, split into imm[11:5] and imm[4:0]) Source Register (rs2): ra (x1, 5 bits) Base Register (rs1): sp (x2, 5 bits) Function (funct3): 011 (3 bits) Breakdown:
 
-Immediate (8): 0000000001000 rs2 (ra = x1): 00001 rs1 (sp = x2): 00010 funct3: 011
+### Machine Code Instructions:
 
-Machine Code Format: imm[11:5] | rs2 | rs1 | funct3 | imm[4:0] | opcode 0000000 | 00001 | 00010 | 011 | 00000 | 0100011
+#### 1. **Instruction: addi sp, sp, -16**
 
-3.Machine Code for li a5, 100
-Instruction: li a5, 100 (Expands to: addi a5, x0, 100) Opcode: 0010011 (7 bits) Immediate: 100 (12 bits) Source Register (rs1): x0 (constant 0, 5 bits) Destination Register (rd): a5 (x15, 5 bits) Function (funct3): 000 (3 bits) Breakdown:
+- **Opcode:** 0010011 (7 bits)  
+- **Immediate:** -16 (12 bits, two's complement)  
+- **Source Register (rs1):** sp (x2) (5 bits)  
+- **Destination Register (rd):** sp (x2) (5 bits)  
+- **Function (funct3):** 000 (3 bits)  
 
-Immediate (100): 00000001100100 rs1 (x0 = 0): 00000 funct3: 000 rd (a5 = x15): 01111
+**Breakdown:**
+- Immediate (-16): 111111111100  
+- rs1 (sp = x2): 00010  
+- funct3: 000  
+- rd (sp = x2): 00010  
 
-Machine Code Format: imm[11:0] | rs1 | funct3 | rd | opcode 0000001100 | 00000 | 000 | 01111 | 0010011
+**Machine Code Format:**  
+imm[11:0] | rs1 | funct3 | rd | opcode  
+1111111100 | 00010 | 000 | 00010 | 0010011
 
-4.Machine Code for addiw a5, a5, -1
-Instruction: addiw a5, a5, -1 Opcode: 0011011 (7 bits) Immediate: -1 (12 bits, two's complement) Source Register (rs1): a5 (x15, 5 bits) Destination Register (rd): a5 (x15, 5 bits) Function (funct3): 000 (3 bits) Breakdown:
+---
 
-Immediate (-1): 111111111111 rs1 (a5 = x15): 01111 funct3: 000 rd (a5 = x15): 01111
+#### 2. **Instruction: addi x5, x0, 8**
 
-Machine Code Format: imm[11:0] | rs1 | funct3 | rd | opcode 1111111111 | 01111 | 000 | 01111 | 0011011
+- **Opcode:** 0010011 (7 bits)  
+- **Immediate:** 8 (12 bits)  
+- **Source Register (rs1):** x0 (5 bits)  
+- **Destination Register (rd):** x5 (5 bits)  
+- **Function (funct3):** 000 (3 bits)  
 
-5.Machine Code for bnez a5, 10160
-Instruction: bnez a5, 10160 (Expands to: beq a5, x0, offset) Opcode: 1100011 (7 bits) Immediate: Offset (calculated based on PC) Source Register (rs1): a5 (x15, 5 bits) Source Register (rs2): x0 (constant 0, 5 bits) Function (funct3): 001 (3 bits)
+**Breakdown:**
+- Immediate (8): 000000001000  
+- rs1 (x0 = 0): 00000  
+- funct3: 000  
+- rd (x5 = x5): 00101  
 
-Breakdown: Immediate: Calculated (split as imm[12|10:5|4:1|11]) rs1 (a5 = x15): 01111 rs2 (x0 = 0): 00000 funct3: 001
+**Machine Code Format:**  
+imm[11:0] | rs1 | funct3 | rd | opcode  
+000000001000 | 00000 | 000 | 00101 | 0010011
 
-Machine Code Format: imm[12|10:5] | rs2 | rs1 | funct3 | imm[4:1|11] | opcode xxxxxxxxxxx | 00000 | 01111 | 001 | xxxxxxxx | 1100011
+---
 
-6.Machine Code for lui a2, 0x1
-Instruction: lui a2, 0x1 Opcode: 0110111 (7 bits) Immediate: 0x1 (20 bits, shifted left by 12 bits) Destination Register (rd): a2 (x12, 5 bits)
+#### 3. **Instruction: add x6, x7, x8**
 
-Breakdown: Immediate (0x1): 00000000000000000001 rd (a2 = x12): 01100
+- **Opcode:** 0110011 (7 bits)  
+- **Source Register 1 (rs1):** x7 (5 bits)  
+- **Source Register 2 (rs2):** x8 (5 bits)  
+- **Destination Register (rd):** x6 (5 bits)  
+- **Function (funct3):** 000 (3 bits)  
+- **Function (funct7):** 0000000 (7 bits)
 
-Machine Code Format: imm[31:12] | rd | opcode 0000000000000001 | 01100 | 0110111
+**Breakdown:**
+- rs1 (x7): 00111  
+- rs2 (x8): 01000  
+- funct3: 000  
+- rd (x6): 00110  
+- funct7: 0000000  
 
-7.Machine Code for addi a2, a2, 954
-Instruction: addi a2, a2, 954 Opcode: 0010011 (7 bits) Immediate: 954 (12 bits) Source Register (rs1): a2 (x12, 5 bits) Destination Register (rd): a2 (x12, 5 bits) Function (funct3): 000 (3 bits)
+**Machine Code Format:**  
+funct7 | rs2 | rs1 | funct3 | rd | opcode  
+0000000 | 01000 | 00111 | 000 | 00110 | 0110011
 
-Breakdown: Immediate (954): 001110101010 rs1 (a2 = x12): 01100 funct3: 000 rd (a2 = x12): 01100
+---
 
-Machine Code Format: imm[11:0] | rs1 | funct3 | rd | opcode 0011101010 | 01100 | 000 | 01100 | 0010011
+#### 4. **Instruction: lw x1, 0(x2)**
 
-8.Machine Code for li a1, 100
-Instruction: li a1, 100 (Expands to: addi a1, x0, 100) Opcode: 0010011 (7 bits) Immediate: 100 (12 bits) Source Register (rs1): x0 (constant 0, 5 bits) Destination Register (rd): a1 (x11, 5 bits) Function (funct3): 000 (3 bits)
+- **Opcode:** 0000011 (7 bits)  
+- **Immediate:** 0 (12 bits)  
+- **Base Register (rs1):** x2 (5 bits)  
+- **Destination Register (rd):** x1 (5 bits)  
+- **Function (funct3):** 010 (3 bits)  
 
-Breakdown: Immediate (100): 00000001100100 rs1 (x0 = 0): 00000 funct3: 000 rd (a1 = x11): 01011
+**Breakdown:**
+- Immediate (0): 000000000000  
+- rs1 (x2 = 2): 00010  
+- funct3: 010  
+- rd (x1 = 1): 00001  
 
-Machine Code Format: imm[11:0] | rs1 | funct3 | rd | opcode 0000000110 | 00000 | 000 | 01011 | 0010011
+**Machine Code Format:**  
+imm[11:0] | rs1 | funct3 | rd | opcode  
+000000000000 | 00010 | 010 | 00001 | 0000011
 
-9.Machine Code for lui a0, 0x1c
-Instruction: lui a0, 0x1c Opcode: 0110111 (7 bits) Immediate: 0x1c (20 bits, shifted left by 12 bits) Destination Register (rd): a0 (x10, 5 bits)
+---
 
-Breakdown: Immediate (0x1c): 00000000000001110000 rd (a0 = x10): 01010
+#### 5. **Instruction: sw x1, 0(x2)**
 
-Machine Code Format: imm[31:12] | rd | opcode 0000000000000111 | 01010 | 0110111
+- **Opcode:** 0100011 (7 bits)  
+- **Immediate:** 0 (12 bits)  
+- **Base Register (rs1):** x2 (5 bits)  
+- **Source Register (rs2):** x1 (5 bits)  
+- **Function (funct3):** 010 (3 bits)  
 
-10.Machine Code for addi a0, a0, 160
-Instruction: addi a0, a0, 160 Opcode: 0010011 (7 bits) Immediate: 160 (12 bits) Source Register (rs1): a0 (x10, 5 bits) Destination Register (rd): a0 (x10, 5 bits) Function (funct3): 000 (3 bits)
+**Breakdown:**
+- Immediate (0): 000000000000  
+- rs1 (x2 = 2): 00010  
+- funct3: 010  
+- rs2 (x1 = 1): 00001  
 
-Breakdown: Immediate (160): 000010100000 rs1 (a0 = x10): 01010 funct3: 000 rd (a0 = x10): 01010
+**Machine Code Format:**  
+imm[11:5] | rs2 | rs1 | funct3 | imm[4:0] | opcode  
+0000000 | 00001 | 00010 | 010 | 00000 | 0100011
 
-Machine Code Format: imm[11:0] | rs1 | funct3 | rd | opcode 0000101000 | 01010 | 000 | 01010 | 0010011
+---
 
-11.Machine Code for jal ra, printf
-Instruction: jal ra, printf Opcode: 1101111 (7 bits) Immediate: Offset (calculated based on PC) Destination Register (rd): ra (x1, 5 bits)
+#### 6. **Instruction: jal x1, 1000**
 
-Breakdown: Immediate: Calculated (split into imm[20|10:1|11|19:12]) rd (ra = x1): 00001
+- **Opcode:** 1101111 (7 bits)  
+- **Immediate:** 1000 (20 bits)  
+- **Destination Register (rd):** x1 (5 bits)  
+- **Function (funct3):** 000 (3 bits)  
 
-Machine Code Format: imm[20|10:1|11|19:12] | rd | opcode xxxxxxxxxxxxxxxxxxxxx | 00001 | 1101111
+**Breakdown:**
+- Immediate (1000): 00000000000000111100  
+- rd (x1): 00001  
+- funct3: 000  
 
-12.Machine Code for ld ra, 8(sp)
-Instruction: ld ra, 8(sp) Opcode: 0000011 (7 bits) Immediate: 8 (12 bits) Source Register (rs1): sp (x2, 5 bits) Destination Register (rd): ra (x1, 5 bits) Function (funct3): 011 (3 bits)
+**Machine Code Format:**  
+imm[20] | imm[10:1] | imm[11] | imm[19:12] | rd | opcode  
+0 | 0000000011 | 1 | 000000000000 | 00001 | 1101111
 
-Breakdown: Immediate (8): 0000000001000 rs1 (sp = x2): 00010 funct3: 011 rd (ra = x1): 00001
+---
 
-Machine Code Format: imm[11:0] | rs1 | funct3 | rd | opcode 0000000100 | 00010 | 011 | 00001 | 0000011
+#### 7. **Instruction: and x9, x5, x8**
 
-13.Machine Code for add sp, sp, 16
-Instruction: add sp, sp, 16 Opcode: 0110011 (7 bits) Immediate: Not used (R-type) Source Register (rs1): sp (x2, 5 bits) Source Register (rs2): sp (x2, 5 bits) Destination Register (rd): sp (x2, 5 bits) Function (funct3): 000 (3 bits) Function (funct7): 0000000 (7 bits)
+- **Opcode:** 0110011 (7 bits)  
+- **Source Register 1 (rs1):** x5 (5 bits)  
+- **Source Register 2 (rs2):** x8 (5 bits)  
+- **Destination Register (rd):** x9 (5 bits)  
+- **Function (funct3):** 111 (3 bits)  
+- **Function (funct7):** 0000000 (7 bits)
 
-Breakdown: rs1 (sp = x2): 00010 rs2 (sp = x2): 00010 rd (sp = x2): 00010 funct3: 000 funct7: 0000000
+**Breakdown:**
+- rs1 (x5): 00101  
+- rs2 (x8): 01000  
+- funct3: 111  
+- rd (x9): 01001  
+- funct7: 0000000  
 
-14.Machine Code Format: funct7 | rs2 | rs1 | funct3 | rd | opcode 0000000 | 00010 | 00010 | 000 | 00010 | 0110011
+**Machine Code Format:**  
+funct7 | rs2 | rs1 | funct3 | rd | opcode  
+0000000 | 01000 | 00101 | 111 | 01001 | 0110011
 
-Machine Code for ret
-Instruction: ret (Expands to: jalr x0, 0(ra)) Opcode: 1100111 (7 bits) Immediate: 0 (12 bits) Source Register (rs1): ra (x1, 5 bits) Destination Register (rd): x0 (5 bits) Function (funct3): 000 (3 bits)
+---
 
-Breakdown: Immediate (0): 000000000000 rs1 (ra = x1): 00001 funct3: 000 rd (x0 = 0): 00000
+#### 8. **Instruction: or x10, x5, x6**
 
-Machine Code Format: imm[11:0] | rs1 | funct3 | rd | opcode 0000000000 | 00001 | 000 | 00000 | 1100111
+- **Opcode:** 0110011 (7 bits)  
+- **Source Register 1 (rs1):** x5 (5 bits)  
+- **Source Register 2 (rs2):** x6 (5 bits)  
+- **Destination Register (rd):** x10 (5 bits)  
+- **Function (funct3):** 110 (3 bits)  
+- **Function (funct7):** 0000000 (7 bits)
 
-15.Machine Code for sd a0, -32(sp)
-Instruction: sd a0, -32(sp) Opcode: 0100011 (7 bits) Immediate: -32 (split into imm[11:5] and imm[4:0]) Source Register 1 (rs1): sp (x2, 5 bits) Source Register 2 (rs2): a0 (x10, 5 bits) Function (funct3): 011 (3 bits)
+**Breakdown:**
+- rs1 (x5): 00101  
+- rs2 (x6): 00110  
+- funct3: 110  
+- rd (x10): 01010  
+- funct7: 0000000  
 
-Breakdown: Immediate (-32): 1111111111100000 imm[11:5]: 1111110 imm[4:0]: 00000 rs1 (sp = x2): 00010 rs2 (a0 = x10): 01010 funct3: 011
+**Machine Code Format:**  
+funct7 | rs2 | rs1 | funct3 | rd | opcode  
+0000000 | 00110 | 00101 | 110 | 01010 | 0110011
+
+---
+
+#### 9. **Instruction: xor x11, x5, x6**
+
+- **Opcode:** 0110011 (7 bits)  
+- **Source Register 1 (rs1):** x5 (5 bits)  
+- **Source Register 2 (rs2):** x6 (5 bits)  
+- **Destination Register (rd):** x11 (5 bits)  
+- **Function (funct3):** 100 (3 bits)  
+- **Function (funct7):** 0000000 (7 bits)
+
+**Breakdown:**
+- rs1 (x5): 00101  
+- rs2 (x6): 00110  
+- funct3: 100  
+- rd (x11): 01011  
+- funct7: 0000000  
+
+**Machine Code Format:**  
+funct7 | rs2 | rs1 | funct3 | rd | opcode  
+0000000 | 00110 | 00101 | 100 | 01011 | 0110011
+
+---
+
+#### 10. **Instruction: slli x7, x8, 3**
+
+- **Opcode:** 0010011 (7 bits)  
+- **Immediate:** 3 (12 bits)  
+- **Source Register (rs1):** x8 (5 bits)  
+- **Destination Register (rd):** x7 (5 bits)  
+- **Function (funct3):** 001 (3 bits)  
+- **Function (funct7):** 0000000 (7 bits)
+
+**Breakdown:**
+- Immediate (3): 000000000011  
+- rs1 (x8): 01000  
+- funct3: 001  
+- rd (x7): 00111  
+- funct7: 0000000  
+
+**Machine Code Format:**  
+funct7 | imm[5:0] | rs1 | funct3 | rd | opcode  
+0000000 | 000011 | 01000 | 001 | 00111 | 0010011
+
+---
+
+#### 11. **Instruction: srli x7, x8, 4**
+
+- **Opcode:** 0010011 (7 bits)  
+- **Immediate:** 4 (12 bits)  
+- **Source Register (rs1):** x8 (5 bits)  
+- **Destination Register (rd):** x7 (5 bits)  
+- **Function (funct3):** 101 (3 bits)  
+- **Function (funct7):** 0000000 (7 bits)
+
+**Breakdown:**
+- Immediate (4): 000000000100  
+- rs1 (x8): 01000  
+- funct3: 101  
+- rd (x7): 00111  
+- funct7: 0000000  
+
+**Machine Code Format:**  
+funct7 | imm[5:0] | rs1 | funct3 | rd | opcode  
+0000000 | 000100 | 01000 | 101 | 00111 | 0010011
+
+---
+
+#### 12. **Instruction: beq x5, x6, 256**
+
+- **Opcode:** 1100011 (7 bits)  
+- **Immediate:** 256 (12 bits)  
+- **Source Register 1 (rs1):** x5 (5 bits)  
+- **Source Register 2 (rs2):** x6 (5 bits)  
+- **Function (funct3):** 000 (3 bits)  
+
+**Breakdown:**
+- Immediate (256): 000000010000  
+- rs1 (x5): 00101  
+- rs2 (x6): 00110  
+- funct3: 000  
+
+**Machine Code Format:**  
+imm[12] | imm[10:5] | rs2 | rs1 | funct3 | imm[4:1] | imm[11] | opcode  
+0 | 000010 | 00110 | 00101 | 000 | 0000 | 0 | 1100011
+
+---
+
+#### 13. **Instruction: bne x5, x6, 512**
+
+- **Opcode:** 1100011 (7 bits)  
+- **Immediate:** 512 (12 bits)  
+- **Source Register 1 (rs1):** x5 (5 bits)  
+- **Source Register 2 (rs2):** x6 (5 bits)  
+- **Function (funct3):** 001 (3 bits)  
+
+**Breakdown:**
+- Immediate (512): 000001000000  
+- rs1 (x5): 00101  
+- rs2 (x6): 00110  
+- funct3: 001  
+
+**Machine Code Format:**  
+imm[12] | imm[10:5] | rs2 | rs1 | funct3 | imm[4:1] | imm[11] | opcode  
+0 | 000100 | 00110 | 00101 | 001 | 0000 | 0 | 1100011
+
+---
+
+#### 14. **Instruction: j x9, 1024**
+
+- **Opcode:** 1101111 (7 bits)  
+- **Immediate:** 1024 (20 bits)  
+- **Destination Register (rd):** x9 (5 bits)  
+
+**Breakdown:**
+- Immediate (1024): 00000000000000000100  
+- rd (x9): 01001  
+
+**Machine Code Format:**  
+imm[20] | imm[10:1] | imm[11] | imm[19:12] | rd | opcode  
+0 | 0000000001 | 0 | 000000000100 | 01001 | 1101111
+
+---
+
+#### 15. **Instruction: xor x10, x11, x12**
+
+- **Opcode:** 0110011 (7 bits)  
+- **Source Register 1 (rs1):** x11 (5 bits)  
+- **Source Register 2 (rs2):** x12 (5 bits)  
+- **Destination Register (rd):** x10 (5 bits)  
+- **Function (funct3):** 100 (3 bits)  
+- **Function (funct7):** 0000000 (7 bits)
+
+**Breakdown:**
+- rs1 (x11): 01011  
+- rs2 (x12): 01100  
+- funct3: 100  
+- rd (x10): 01010  
+- funct7: 0000000  
+
+**Machine Code Format:**  
+funct7 | rs2 | rs1 | funct3 | rd | opcode  
+0000000 | 01100 | 01011 | 100 | 01010 | 0110011
 
 
 
