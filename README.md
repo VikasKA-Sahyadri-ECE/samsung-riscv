@@ -15,7 +15,7 @@
 
 ### Files:
 1. [C Program Output Snapshot]([./Task1/c_program_output_snapshot.png](https://github.com/VikasKA-Sahyadri-ECE/samsung-riscv/blob/main/Task1/c%20programm%20output%20snapshot.png))
-2. [RISC-V Simulation Output (O1)](./Task1/riscv_O1.png)
+2. [RISC-V Simulation Output (O1)]([./Task1/riscv_O1.png](https://github.com/VikasKA-Sahyadri-ECE/samsung-riscv/blob/main/Task1/riscv%20(O1%2COfast).png))
 3. [RISC-V Simulation Output (O1) - Part 1](./Task1/riscv_1_O1.png)
 4. [RISC-V Simulation Output (Ofast) - Part 2](./Task1/riscv_2_Ofast.png)
 5. [Ubuntu Screenshot](./Task1/ubuntu_screenshot.png)
