@@ -14,40 +14,40 @@
 <summary>▶ Task 1: C Program Compilation and RISC-V Simulation</summary>
 
 ### Files:
-1. [C Program Output Snapshot](./Task1/c_program_output_snapshot.png)
-2. [RISC-V Simulation Output (O1)](./Task1/riscv_O1.png)
-3. [RISC-V Simulation Output (O1) - Part 1](./Task1/riscv_1_O1.png)
-4. [RISC-V Simulation Output (Ofast) - Part 2](./Task1/riscv_2_Ofast.png)
-5. [Ubuntu Screenshot](./Task1/ubuntu_screenshot.png)
+1. ![C Program Output Snapshot](https://github.com/VikasKA-Sahyadri-ECE/samsung-riscv/raw/main/Task1/c%20programm%20output%20snapshot.png)
+2. ![RISC-V Simulation Output (O1)](https://github.com/VikasKA-Sahyadri-ECE/samsung-riscv/raw/main/Task1/riscv%20(O1%2COfast).png)
+3. ![RISC-V Simulation Output (O1) - Part 1](https://github.com/VikasKA-Sahyadri-ECE/samsung-riscv/raw/main/Task1/riscv%201(O1).png)
+4. ![RISC-V Simulation Output (Ofast) - Part 2](https://github.com/VikasKA-Sahyadri-ECE/samsung-riscv/raw/main/Task1/riscv_2_Ofast.png)
+5. ![Ubuntu Screenshot](https://github.com/VikasKA-Sahyadri-ECE/samsung-riscv/raw/main/Task1/ubuntu_screenshot.png)
 
 ### Task Overview:
 
-In this task, a C program was compiled and simulated on the RISC-V architecture. Outputs from different optimization levels (`-O1` and `-Ofast`) were analyzed to observe the effects on program performance and behavior.
+In this task, a C program was compiled and simulated on the RISC-V architecture. Outputs from different optimization levels (-O1 and -Ofast) were analyzed to observe the effects on program performance and behavior.
 
-#### 1. **C Program Output Snapshot (`c_program_output_snapshot.png`)**
+#### 1. **C Program Output Snapshot (c_program_output_snapshot.png)**
    - A screenshot showing the output of the C program after compilation and execution.
    - It helps visualize the results produced by the program.
 
-#### 2. **RISC-V Simulation Output (O1) (`riscv_O1.png`)**
-   - A screenshot showing the output from the RISC-V simulation with `-O1` optimization.
+#### 2. **RISC-V Simulation Output (O1) (riscv_O1.png)**
+   - A screenshot showing the output from the RISC-V simulation with -O1 optimization.
    - This output helps in comparing the performance and execution flow with optimization.
 
-#### 3. **RISC-V Simulation Output (O1) - Part 1 (`riscv_1_O1.png`)**
-   - A screenshot of the first part of the RISC-V simulation output with `-O1` optimization.
+#### 3. **RISC-V Simulation Output (O1) - Part 1 (riscv_1_O1.png)**
+   - A screenshot of the first part of the RISC-V simulation output with -O1 optimization.
    - It shows the intermediate results of the simulation.
 
-#### 4. **RISC-V Simulation Output (Ofast) - Part 2 (`riscv_2_Ofast.png`)**
-   - A screenshot showing the output from the RISC-V simulation with `-Ofast` optimization.
-   - This output helps in comparing the results with the `-O1` optimization.
+#### 4. **RISC-V Simulation Output (Ofast) - Part 2 (riscv_2_Ofast.png)**
+   - A screenshot showing the output from the RISC-V simulation with -Ofast optimization.
+   - This output helps in comparing the results with the -O1 optimization.
 
-#### 5. **Ubuntu Screenshot (`ubuntu_screenshot.png`)**
+#### 5. **Ubuntu Screenshot (ubuntu_screenshot.png)**
    - A screenshot showing the program execution environment on Ubuntu.
    - This image highlights the terminal where the C program was compiled and executed.
 
 ### Simulation Process:
 
 1. **Compile the C Program**: The C program was compiled using the standard compilation method.
-2. **RISC-V Simulation**: The compiled program was simulated using the RISC-V architecture with `-O1` and `-Ofast` optimization levels.
+2. **RISC-V Simulation**: The compiled program was simulated using the RISC-V architecture with -O1 and -Ofast optimization levels.
 3. **Analyze Outputs**: The outputs from both optimization levels were compared to observe performance differences.
 4. **Capture Screenshots**: Screenshots of the simulation results were taken for documentation.
 
@@ -56,115 +56,92 @@ In this task, a C program was compiled and simulated on the RISC-V architecture.
 <details>
 <summary>▶ Task 2: Simulation with Spike</summary>
 
+### Overview:
+In Task 2, the compiled C code was simulated on the Spike RISC-V simulator. Spike is an architecture simulator for RISC-V processors, which helps to simulate the execution of programs written for the RISC-V architecture. The task focused on debugging, observing the generated assembly output, and comparing the effects of different optimization levels during compilation. Two optimization levels were used during the process: `-O1` and `-Ofast`. Each optimization level affects the assembly instructions and overall program performance.
+
 ### Files:
-1. [C code compiled for Spike simulation](./Task2/C%20code%20complied%20or%20spike%20simulation.png)
-2. [Debugging screenshot](./Task2/Debugging.png)
-3. [Objdump using -O1 format](./Task2/Objdump%20using%20-O1%20farmat.png)
-4. [Objdump using -Ofast format](./Task2/Objdump%20using%20-Ofast%20format.png)
+1. ![C code compiled for Spike simulation](https://github.com/VikasKA-Sahyadri-ECE/samsung-riscv/raw/main/Task2/C%20code%20complied%20or%20spike%20simulation.png)
+2. ![Debugging screenshot](https://github.com/VikasKA-Sahyadri-ECE/samsung-riscv/raw/main/Task2/Debugging.png)
+3. ![Objdump using -O1 format](https://github.com/VikasKA-Sahyadri-ECE/samsung-riscv/raw/main/Task2/Objdump%20using%20-O1%20farmat.png)
+4. ![Objdump using -Ofast format](https://github.com/VikasKA-Sahyadri-ECE/samsung-riscv/raw/main/Task2/Objdump%20using%20-Ofast%20format.png)
+
+### Task Process:
+
+1. **Compile C Code**: The C program was compiled using `riscv64-unknown-elf-gcc` with the respective optimization flags (`-O1` and `-Ofast`).
+2. **Simulation with Spike**: The program was then run on the Spike RISC-V simulator to observe the execution and any differences between the optimization levels.
+3. **Assembly Analysis**: Using `objdump`, the generated assembly code was inspected for both optimization levels to analyze how each optimization affected the code's structure and performance.
+4. **Debugging**: Debugging was performed on the generated assembly code to identify any potential issues and observe the effects of different optimization flags on the program's behavior.
+
+### Key Results:
+- The comparison of `-O1` and `-Ofast` optimization levels showed noticeable differences in performance and code size.
+- The debug process highlighted areas where the compiler optimizations led to more efficient code generation, especially in loop unrolling and instruction reordering.
 
 </details>
 
 <details>
 <summary>▶ Task 3: Machine Code Instructions</summary>
 
-### File:
-- [Instructions.md](./Task3/instructions.md)
-- [Task3.txt](./Task3/Task3.txt)
+### Files:
+1. [Instructions.md](https://github.com/VikasKA-Sahyadri-ECE/samsung-riscv/blob/main/Task3/instructions.md)
+2. [Task3.txt](https://github.com/VikasKA-Sahyadri-ECE/samsung-riscv/blob/main/Task3/Task3.txt)
 
 ### Content:
 
-#### Machine Code for `addi sp, sp, -16`
-- **Instruction:** `addi sp, sp, -16`  
-- **Opcode:** `0010011` (7 bits)  
-- **Immediate:** `-16` (12 bits, two's complement)  
-- **Source Register (rs1):** `sp (x2)` (5 bits)  
-- **Destination Register (rd):** `sp (x2)` (5 bits)  
-- **Function (funct3):** `000` (3 bits)  
+#### Machine Code for addi sp, sp, -16
+- **Instruction:** addi sp, sp, -16  
+- **Opcode:** 0010011 (7 bits)  
+- **Immediate:** -16 (12 bits, two's complement)  
+- **Source Register (rs1):** sp (x2) (5 bits)  
+- **Destination Register (rd):** sp (x2) (5 bits)  
+- **Function (funct3):** 000 (3 bits)  
 
 **Breakdown:**
-- Immediate (-16): `111111111100`  
-- rs1 (sp = x2): `00010`  
-- funct3: `000`  
-- rd (sp = x2): `00010`  
+- Immediate (-16): 111111111100  
+- rs1 (sp = x2): 00010  
+- funct3: 000  
+- rd (sp = x2): 00010  
 
 **Machine Code Format:**  
-`imm[11:0] | rs1 | funct3 | rd | opcode`  
-`1111111100 | 00010 | 000 | 00010 | 0010011`
+imm[11:0] | rs1 | funct3 | rd | opcode  
+1111111100 | 00010 | 000 | 00010 | 0010011
 
 ---
 
-#### Machine Code for `sd ra, 8(sp)`
-- **Instruction:** `sd ra, 8(sp)`  
-- **Opcode:** `0100011` (7 bits)  
-- **Immediate:** `8` (12 bits, split into `imm[11:5]` and `imm[4:0]`)  
-- **Source Register (rs2):** `ra (x1)` (5 bits)  
-- **Base Register (rs1):** `sp (x2)` (5 bits)  
-- **Function (funct3):** `011` (3 bits)  
+... (Include other instructions similarly) ...
 
-**Breakdown:**
-- Immediate (8): `0000000001000`  
-- rs2 (ra = x1): `00001`  
-- rs1 (sp = x2): `00010`  
-- funct3: `011`  
+</details>
 
-**Machine Code Format:**  
-`imm[11:5] | rs2 | rs1 | funct3 | imm[4:0] | opcode`  
-`0000000 | 00001 | 00010 | 011 | 00000 | 0100011`
+<details>
+<summary>▶ Task 4: Verilog Simulation</summary>
 
----
+### Files:
+![Basic Step of Iverilog](https://github.com/VikasKA-Sahyadri-ECE/samsung-riscv/raw/main/Task4/Basicstep_of_iverilog.png)
+![GTKWAVE Waveform 1](https://github.com/VikasKA-Sahyadri-ECE/samsung-riscv/raw/main/Task4/GTKWAVE_waveform1.png)
+![GTKWAVE Waveform 2](https://github.com/VikasKA-Sahyadri-ECE/samsung-riscv/raw/main/Task4/GTKWAVE_waveform2.png)
+![GTKWAVE Window](https://github.com/VikasKA-Sahyadri-ECE/samsung-riscv/raw/main/Task4/GTKWAVE_window.png)
 
-#### Machine Code for `li a5, 100`
-- **Instruction:** `li a5, 100` (Expands to: `addi a5, x0, 100`)  
-- **Opcode:** `0010011` (7 bits)  
-- **Immediate:** `100` (12 bits)  
-- **Source Register (rs1):** `x0 (constant 0)` (5 bits)  
-- **Destination Register (rd):** `a5 (x15)` (5 bits)  
-- **Function (funct3):** `000` (3 bits)  
+### Task Overview:
 
-**Breakdown:**
-- Immediate (100): `00000001100100`  
-- rs1 (x0 = 0): `00000`  
-- funct3: `000`  
-- rd (a5 = x15): `01111`  
+In this task, Verilog code was simulated using Iverilog and the resulting waveforms were analyzed using GTKWAVE. Below is a breakdown of the files involved:
 
-**Machine Code Format:**  
-`imm[11:0] | rs1 | funct3 | rd | opcode`  
-`0000001100 | 00000 | 000 | 01111 | 0010011`
+#### 1. **Basic Step of Iverilog (Basicstep_of_iverilog.png)**
+   - A screenshot showing the basic steps of running Iverilog for Verilog simulation.
+   - It illustrates the setup and commands used to compile and simulate the Verilog code.
 
----
+#### 2. **GTKWAVE Waveform 1 (GTKWAVE_waveform1.png)**
+   - A screenshot showing the first waveform generated by GTKWAVE.
+   - This waveform represents the output of the Verilog simulation for the given input.
 
-#### Machine Code for `addiw a5, a5, -1`
-- **Instruction:** `addiw a5, a5, -1`  
-- **Opcode:** `0011011` (7 bits)  
-- **Immediate:** `-1` (12 bits, two's complement)  
-- **Source Register (rs1):** `a5 (x15)` (5 bits)  
-- **Destination Register (rd):** `a5 (x15)` (5 bits)  
-- **Function (funct3):** `000` (3 bits)  
+#### 3. **GTKWAVE Waveform 2 (GTKWAVE_waveform2.png)**
+   - A screenshot showing the second waveform, which may represent a different simulation or a modified version of the first one.
 
-**Breakdown:**
-- Immediate (-1): `111111111111`  
-- rs1 (a5 = x15): `01111`  
-- funct3: `000`  
-- rd (a5 = x15): `01111`  
+#### 4. **GTKWAVE Window (GTKWAVE_window.png)**
+   - A screenshot showing the GTKWAVE window, displaying the simulation results in a graphical format.
+   - This helps visualize the timing and behavior of the signals over time.
 
-**Machine Code Format:**  
-`imm[11:0] | rs1 | funct3 | rd | opcode`  
-`1111111111 | 01111 | 000 | 01111 | 0011011`
+### Simulation Process:
 
-### Machine Code Instructions
-
-#### Machine Code for `bnez a5, 10160`
-Instruction: `bnez a5, 10160` (Expands to: `beq a5, x0, offset`)
-- **Opcode**: `1100011` (7 bits)
-- **Immediate**: Offset (calculated based on PC)
-- **Source Register (rs1)**: `a5` (`x15`, 5 bits)
-- **Source Register (rs2)**: `x0` (constant 0, 5 bits)
-- **Function (funct3)**: `001` (3 bits)
-
-**Breakdown:**
-- Immediate: Calculated (split as `imm[12|10:5|4:1|11]`)
-- `rs1` (`a5 = x15`): `01111`
-- `rs2` (`x0 = 0`): `00000`
-- `funct3`: `001`
-
-**Machine Code Format:**
+1. **Iverilog Compilation**: The Verilog code was compiled using Iverilog with the following command:
+   
+```bash
+iverilog -o simulation_output.vvp my_verilog_code.v
