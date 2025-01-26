@@ -105,9 +105,7 @@ In Task 2, the compiled C code was simulated on the Spike RISC-V simulator. Spik
 imm[11:0] | rs1 | funct3 | rd | opcode  
 1111111100 | 00010 | 000 | 00010 | 0010011
 
----
 
-... (Include other instructions similarly) ...
 
 </details>
 
