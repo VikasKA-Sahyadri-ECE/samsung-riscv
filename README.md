@@ -388,5 +388,4 @@ In this task, Verilog code was simulated using Iverilog and the resulting wavefo
 1. **Iverilog Compilation**: The Verilog code was compiled using Iverilog with the following command:
    ```bash
    iverilog -o simulation_output.vvp my_verilog_code.v
-<details>
 
