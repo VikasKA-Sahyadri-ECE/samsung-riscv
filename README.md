@@ -69,6 +69,7 @@ In this task, a C program was compiled and simulated on the RISC-V architecture.
 
 ### File:
 - [Instructions.md](./Task3/instructions.md)
+- [Task3.txt](./Task3/Task3.txt)
 
 ### Content:
 
