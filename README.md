@@ -449,10 +449,130 @@ In this task, Verilog code was simulated using Iverilog and the resulting wavefo
 
    - ![GTKWAVE window](https://github.com/user-attachments/assets/45071ff8-a471-4cbc-8756-b6e72f3bfb78)
 
-
 ### Simulation Process:
 
 1. **Iverilog Compilation**: The Verilog code was compiled using Iverilog with the following command:
    
 ```bash
 iverilog -o simulation_output.vvp my_verilog_code.v
+
+
+##<summary>▶ Task 5: Smart Plant Watering System </summary>
+
+
+## Overview
+![circuit](https://github.com/user-attachments/assets/44bea57f-30aa-499b-84f2-3d765ee5a381)
+
+The Smart Plant Watering System is an IoT-based solution designed to automatically water plants based on soil moisture levels. The system uses a combination of sensors and a RISC-V SoC chip to monitor the soil moisture, control a motor to pump water, and ensure the plants are watered when necessary. The system can be controlled remotely via a mobile app and includes logging functionality for tracking water usage. The solution is energy-efficient, scalable, and cost-effective for both indoor and outdoor plant care.
+
+## Key Features
+- **Real-Time Soil Moisture Monitoring:** Constantly checks the moisture levels of the soil to determine whether watering is needed.
+- **Automatic Watering Control:** Uses a motor or pump to water the plants when moisture levels fall below a defined threshold.
+- **Remote Control:** Control the watering system remotely via a mobile app.
+- **Data Logging:** Logs all sensor data to an SD card for later analysis.
+- **Mobile App Integration:** Displays sensor data in real-time and allows for manual system control via MIT App Inventor.
+- **Energy-Efficient:** Low-power system design that ensures efficient use of energy.
+
+## Components Required
+- **RISC-V SoC Chip** (e.g., CH32V003)
+- **Soil Moisture Sensor** (e.g., capacitive type)
+- **DC Motor** (Water Pump)
+- **Motor Driver** (e.g., L298N)
+- **Relay Module** (for controlling motor)
+- **ESP32 Development Board**
+- **MicroSD Card Module**
+- **MIT App Inventor** (for Mobile App)
+- **Power Supply** (5V for SoC, 9V for motor, as required)
+- **Jumper Wires**
+
+## Pin Connections
+
+### **RISC-V SoC Chip Pinout**
+
+| **Component**            | **Pin**                      | **RISC-V SoC Pin**   |
+|--------------------------|------------------------------|----------------------|
+| **Soil Moisture Sensor**  | VCC                          | 3.3V                 |
+|                          | GND                          | GND                  |
+|                          | Signal Pin                   | GPIO Pin (e.g., GPIO12) |
+| **DC Motor Driver (L298N)** | IN1                         | GPIO Pin (e.g., GPIO1) |
+|                          | IN2                          | GPIO Pin (e.g., GPIO2) |
+|                          | EN (Enable Pin)              | GPIO Pin (e.g., GPIO3) |
+| **Relay Module**          | VCC                          | 5V                   |
+|                          | GND                          | GND                  |
+|                          | IN (Control)                 | GPIO Pin (e.g., GPIO4) |
+| **MicroSD Card Module**   | VCC                          | 5V or 3.3V (depending on the module) |
+|                          | GND                          | GND                  |
+|                          | CS, SCK, MOSI, MISO         | SPI Pins on RISC-V SoC |
+| **ESP32 (optional for mobile app control)** | VCC  | 3.3V |
+|                          | GND                          | GND                  |
+
+## How It Works
+
+### **Sensor Monitoring:**
+- The **soil moisture sensor** continuously monitors the moisture level in the soil and outputs a signal indicating whether the soil is dry or sufficiently moist.
+
+### **Data Processing and Control:**
+- The **RISC-V SoC chip** reads the data from the soil moisture sensor.
+- When the moisture level falls below a predefined threshold, the **RISC-V chip** triggers the motor driver to turn on the DC motor (water pump).
+
+### **Motor Control:**
+- The **motor driver (L298N)** is used to control the water pump, turning it on or off based on the soil moisture readings.
+
+### **Data Logging:**
+- The sensor readings are logged to a **microSD card** for later retrieval and analysis.
+
+### **Mobile App Integration:**
+- The system can be controlled and monitored remotely via a mobile app created using **MIT App Inventor**. The app provides real-time data from the soil moisture sensor and allows manual control of the watering system.
+
+## Code Outline:
+
+```cpp
+// Define Pins
+#define MOISTURE_SENSOR_PIN GPIO12   // Soil moisture sensor pin
+#define MOTOR_IN1_PIN GPIO1         // Motor driver IN1 pin
+#define MOTOR_IN2_PIN GPIO2         // Motor driver IN2 pin
+#define RELAY_PIN GPIO4             // Relay control pin
+#define THRESHOLD 500               // Moisture level threshold (adjust as needed)
+
+void setup() {
+    // Set motor and relay control pins as outputs
+    pinMode(MOTOR_IN1_PIN, OUTPUT);
+    pinMode(MOTOR_IN2_PIN, OUTPUT);
+    pinMode(RELAY_PIN, OUTPUT);
+
+    // Start with motor and relay turned off
+    digitalWrite(MOTOR_IN1_PIN, LOW);
+    digitalWrite(MOTOR_IN2_PIN, LOW);
+    digitalWrite(RELAY_PIN, LOW);
+
+    // Initialize Serial Monitor
+    Serial.begin(9600);
+}
+
+void loop() {
+    // Read moisture sensor value (analog input)
+    int moistureValue = analogRead(MOISTURE_SENSOR_PIN);
+
+    // Print moisture value to Serial monitor for debugging
+    Serial.print("Moisture Value: ");
+    Serial.println(moistureValue);
+
+    // Check if the soil is dry (below threshold)
+    if (moistureValue < THRESHOLD) {
+        // Soil is dry, activate water pump (motor)
+        digitalWrite(MOTOR_IN1_PIN, HIGH);  // Motor direction 1
+        digitalWrite(MOTOR_IN2_PIN, LOW);   // Motor direction 2
+        digitalWrite(RELAY_PIN, HIGH);      // Turn on relay
+        Serial.println("Watering plants...");
+    } else {
+        // Soil is wet, turn off motor
+        digitalWrite(MOTOR_IN1_PIN, LOW);   // Stop motor
+        digitalWrite(MOTOR_IN2_PIN, LOW);   // Stop motor
+        digitalWrite(RELAY_PIN, LOW);       // Turn off relay
+        Serial.println("Soil is wet, no watering.");
+    }
+
+    // Wait for a second before rechecking
+    delay(1000);
+}
+
