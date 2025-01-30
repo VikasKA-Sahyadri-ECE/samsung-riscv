@@ -13,34 +13,45 @@
 <details>
 <summary>▶ Task 1: C Program Compilation and RISC-V Simulation</summary>
 
-### Files:
-1. ![C Program Output Snapshot](https://github.com/VikasKA-Sahyadri-ECE/samsung-riscv/raw/main/Task1/c%20programm%20output%20snapshot.png)
-2. ![RISC-V Simulation Output (O1)](https://github.com/VikasKA-Sahyadri-ECE/samsung-riscv/raw/main/Task1/riscv%20(O1%2COfast).png)
-3. ![RISC-V Simulation Output (O1) - Part 1](https://github.com/VikasKA-Sahyadri-ECE/samsung-riscv/raw/main/Task1/riscv%201(O1).png)
-4. ![RISC-V Simulation Output (Ofast) - Part 2](https://github.com/VikasKA-Sahyadri-ECE/samsung-riscv/raw/main/Task1/riscv_2_Ofast.png)
-5. ![Ubuntu Screenshot](https://github.com/VikasKA-Sahyadri-ECE/samsung-riscv/raw/main/Task1/ubuntu_screenshot.png)
 
 ### Task Overview:
 
 In this task, a C program was compiled and simulated on the RISC-V architecture. Outputs from different optimization levels (-O1 and -Ofast) were analyzed to observe the effects on program performance and behavior.
 
 #### 1. **C Program Output Snapshot (c_program_output_snapshot.png)**
+
+   ![c programm output snapshot](https://github.com/user-attachments/assets/2d6fe218-efb1-40ee-8720-016615a540cf)
+
    - A screenshot showing the output of the C program after compilation and execution.
    - It helps visualize the results produced by the program.
+   - 
 
 #### 2. **RISC-V Simulation Output (O1) (riscv_O1.png)**
+
+![riscv (O1,Ofast)](https://github.com/user-attachments/assets/b7c824d6-c8a8-4743-9ddb-4ffb126171f1)
+
+      
    - A screenshot showing the output from the RISC-V simulation with -O1 optimization.
    - This output helps in comparing the performance and execution flow with optimization.
 
-#### 3. **RISC-V Simulation Output (O1) - Part 1 (riscv_1_O1.png)**
+
+## 3. **RISC-V Simulation Output (O1) - Part 1 (riscv_1_O1.png)**
+##![riscv 1(O1)](https://github.com/user-attachments/assets/4481c3fe-f948-46ef-a55b-f60d906750d6)
+      
    - A screenshot of the first part of the RISC-V simulation output with -O1 optimization.
    - It shows the intermediate results of the simulation.
 
 #### 4. **RISC-V Simulation Output (Ofast) - Part 2 (riscv_2_Ofast.png)**
+
+![riscv 2 (Ofast)](https://github.com/user-attachments/assets/016de230-8a01-4a32-855c-fe1151a18d81)
+
    - A screenshot showing the output from the RISC-V simulation with -Ofast optimization.
    - This output helps in comparing the results with the -O1 optimization.
 
 #### 5. **Ubuntu Screenshot (ubuntu_screenshot.png)**
+      ![ubuntu screenshot](https://github.com/user-attachments/assets/949955e1-b3a9-4437-a2cc-88d99e51890e)
+
+      
    - A screenshot showing the program execution environment on Ubuntu.
    - This image highlights the terminal where the C program was compiled and executed.
 
@@ -59,18 +70,27 @@ In this task, a C program was compiled and simulated on the RISC-V architecture.
 ### Overview:
 In Task 2, the compiled C code was simulated on the Spike RISC-V simulator. Spike is an architecture simulator for RISC-V processors, which helps to simulate the execution of programs written for the RISC-V architecture. The task focused on debugging, observing the generated assembly output, and comparing the effects of different optimization levels during compilation. Two optimization levels were used during the process: `-O1` and `-Ofast`. Each optimization level affects the assembly instructions and overall program performance.
 
-### Files:
-1. ![C code compiled for Spike simulation](https://github.com/VikasKA-Sahyadri-ECE/samsung-riscv/raw/main/Task2/C%20code%20complied%20or%20spike%20simulation.png)
-2. ![Debugging screenshot](https://github.com/VikasKA-Sahyadri-ECE/samsung-riscv/raw/main/Task2/Debugging.png)
-3. ![Objdump using -O1 format](https://github.com/VikasKA-Sahyadri-ECE/samsung-riscv/raw/main/Task2/Objdump%20using%20-O1%20farmat.png)
-4. ![Objdump using -Ofast format](https://github.com/VikasKA-Sahyadri-ECE/samsung-riscv/raw/main/Task2/Objdump%20using%20-Ofast%20format.png)
 
 ### Task Process:
 
 1. **Compile C Code**: The C program was compiled using `riscv64-unknown-elf-gcc` with the respective optimization flags (`-O1` and `-Ofast`).
+ ![C code complied or spike simulation](https://github.com/user-attachments/assets/7e1b3403-3c2b-4297-995a-76ab96c49ca5)
+
 2. **Simulation with Spike**: The program was then run on the Spike RISC-V simulator to observe the execution and any differences between the optimization levels.
-3. **Assembly Analysis**: Using `objdump`, the generated assembly code was inspected for both optimization levels to analyze how each optimization affected the code's structure and performance.
-4. **Debugging**: Debugging was performed on the generated assembly code to identify any potential issues and observe the effects of different optimization flags on the program's behavior.
+
+![C code complied or spike simulation](https://github.com/user-attachments/assets/9d3e4bf7-2da7-4ff3-9de6-4a998e80a873)
+
+4. **Assembly Analysis**: Using `objdump`, the generated assembly code was inspected for both optimization levels to analyze how each optimization affected the code's structure and performance.
+
+![Objdump using -O1 farmat](https://github.com/user-attachments/assets/416d9bb2-ad0b-46e4-945a-6c4404a3be64)
+
+
+![Objdump using -Ofast format](https://github.com/user-attachments/assets/abda70f4-e7c8-4ad3-a31a-4bdeb4d49d09)
+
+6. **Debugging**: Debugging was performed on the generated assembly code to identify any potential issues and observe the effects of different optimization flags on the program's behavior.
+
+![Debugging](https://github.com/user-attachments/assets/9b879a9c-66a4-4e59-80ba-20aa0a18cd2c)
+
 
 ### Key Results:
 - The comparison of `-O1` and `-Ofast` optimization levels showed noticeable differences in performance and code size.
@@ -81,11 +101,6 @@ In Task 2, the compiled C code was simulated on the Spike RISC-V simulator. Spik
 <details>
    
 <summary>▶ Task 3: Machine Code Instructions</summary>
-
-### Files:
-1. [Instructions.md](https://github.com/VikasKA-Sahyadri-ECE/samsung-riscv/blob/main/Task3/instructions.md)
-2. [Task3.txt](https://github.com/VikasKA-Sahyadri-ECE/samsung-riscv/blob/main/Task3/Task3.txt)
-
 
 ### Content:
 
@@ -404,11 +419,6 @@ funct7 | rs2 | rs1 | funct3 | rd | opcode
 <details>
 <summary>▶ Task 4: Verilog Simulation</summary>
 
-### Files:
-![Basic Step of Iverilog](https://github.com/VikasKA-Sahyadri-ECE/samsung-riscv/raw/main/Task4/Basicstep_of_iverilog.png)
-![GTKWAVE Waveform 1](https://github.com/VikasKA-Sahyadri-ECE/samsung-riscv/raw/main/Task4/GTKWAVE_waveform1.png)
-![GTKWAVE Waveform 2](https://github.com/VikasKA-Sahyadri-ECE/samsung-riscv/raw/main/Task4/GTKWAVE_waveform2.png)
-![GTKWAVE Window](https://github.com/VikasKA-Sahyadri-ECE/samsung-riscv/raw/main/Task4/GTKWAVE_window.png)
 
 ### Task Overview:
 
@@ -417,17 +427,28 @@ In this task, Verilog code was simulated using Iverilog and the resulting wavefo
 #### 1. **Basic Step of Iverilog (Basicstep_of_iverilog.png)**
    - A screenshot showing the basic steps of running Iverilog for Verilog simulation.
    - It illustrates the setup and commands used to compile and simulate the Verilog code.
+   - 
+![Basicstep of iverilog](https://github.com/user-attachments/assets/f573f486-e791-4728-81c3-9b78b3409d20)
 
 #### 2. **GTKWAVE Waveform 1 (GTKWAVE_waveform1.png)**
    - A screenshot showing the first waveform generated by GTKWAVE.
    - This waveform represents the output of the Verilog simulation for the given input.
 
+   - ![GTKWAVE waveform1](https://github.com/user-attachments/assets/6ef8e61e-b885-486b-89ed-0a5b8345035c)
+
+
 #### 3. **GTKWAVE Waveform 2 (GTKWAVE_waveform2.png)**
    - A screenshot showing the second waveform, which may represent a different simulation or a modified version of the first one.
+
+   - ![GTKWAVE waveform2](https://github.com/user-attachments/assets/30650ee9-3fb4-46e8-b327-74583645f1c1)
+
 
 #### 4. **GTKWAVE Window (GTKWAVE_window.png)**
    - A screenshot showing the GTKWAVE window, displaying the simulation results in a graphical format.
    - This helps visualize the timing and behavior of the signals over time.
+
+   - ![GTKWAVE window](https://github.com/user-attachments/assets/45071ff8-a471-4cbc-8756-b6e72f3bfb78)
+
 
 ### Simulation Process:
 
