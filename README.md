@@ -452,13 +452,13 @@ In this task, Verilog code was simulated using Iverilog and the resulting wavefo
 ### Simulation Process:
 
 1. **Iverilog Compilation**: The Verilog code was compiled using Iverilog with the following command:
-   
-```bash
+
 iverilog -o simulation_output.vvp my_verilog_code.v
 
+</details>
 
-##<summary>▶ Task 5: Smart Plant Watering System </summary>
-
+<details>
+<summary>▶ Task 5: Smart Plant Watering System </summary>
 
 ## Overview
 ![circuit](https://github.com/user-attachments/assets/44bea57f-30aa-499b-84f2-3d765ee5a381)
@@ -526,7 +526,6 @@ The Smart Plant Watering System is an IoT-based solution designed to automatical
 
 ## Code Outline:
 
-```cpp
 // Define Pins
 #define MOISTURE_SENSOR_PIN GPIO12   // Soil moisture sensor pin
 #define MOTOR_IN1_PIN GPIO1         // Motor driver IN1 pin
@@ -540,7 +539,7 @@ void setup() {
     pinMode(MOTOR_IN2_PIN, OUTPUT);
     pinMode(RELAY_PIN, OUTPUT);
 
-    // Start with motor and relay turned off
+    //Start with motor and relay turned off
     digitalWrite(MOTOR_IN1_PIN, LOW);
     digitalWrite(MOTOR_IN2_PIN, LOW);
     digitalWrite(RELAY_PIN, LOW);
@@ -575,4 +574,6 @@ void loop() {
     // Wait for a second before rechecking
     delay(1000);
 }
+
+
 
